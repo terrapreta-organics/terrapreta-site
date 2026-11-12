@@ -1,0 +1,10 @@
+node_modules/
+_site/
+.netlify/
+drafts/
+incoming/
+screenshots/
+tmp/
+site.zip
+.env*
+.DS_Store
