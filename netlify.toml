@@ -1,7 +1,14 @@
 [build]
-  command = "npm run build"
+  # Production deploys (the production branch) run build:prod so DRAFT posts and hidden placeholders drop out.
+  # Deploy Previews and branch deploys override this command so drafts can be reviewed on those URLs.
+  command = "npm run build:prod"
   publish = "_site"
 
 [build.environment]
   NODE_VERSION = "20"
-  # At launch, change the command to "npm run build:prod" so DRAFT posts and hidden placeholders drop out.
+
+[context.deploy-preview]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"
