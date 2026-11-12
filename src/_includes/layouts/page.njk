@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+{% if hero %}{% if hero.style == "full" %}
+<section class="hero{% if hero.video %} has-video{% endif %}">{% if hero.image %}<img src="{{ hero.image }}" alt="{{ hero.alt }}" style="object-position:{{ hero.position or 'center' }}">{% endif %}{% if hero.video %}<video class="hero-video" muted loop playsinline preload="none" poster="{{ hero.video_poster or hero.image }}" data-mp4="{{ hero.video }}"{% if hero.video_webm %} data-webm="{{ hero.video_webm }}"{% endif %} aria-hidden="true"></video><script>(function(){var v=document.currentScript.previousElementSibling;if(window.matchMedia("(min-width:1100px)").matches&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){[["webm","video/webm"],["mp4","video/mp4"]].forEach(function(x){var u=v.dataset[x[0]];if(u){var s=document.createElement("source");s.src=u;s.type=x[1];v.appendChild(s);}});v.closest(".hero").classList.add("video-on");v.load();v.play&&v.play().catch(function(){});}else{v.remove();}})();</script>{% endif %}<div class="t">{% if hero.eyebrow %}<div class="eyebrow">{{ hero.eyebrow }}</div>{% endif %}<h1>{{ hero.title }}</h1>{% if hero.intro %}<p class="sub">{{ hero.intro }}</p>{% endif %}{% if hero.buttons %}<div class="btns" style="margin-top:28px">{% for x in hero.buttons %}<a class="btn{% if x.fill %} fill{% endif %}" href="{{ x.url }}">{{ x.text }}</a>{% endfor %}</div>{% endif %}</div></section>
+{% else %}
+<section class="wrap top">{% if hero.eyebrow %}<div class="eyebrow" style="color:var(--mute)">{{ hero.eyebrow }}</div>{% endif %}<h1>{{ hero.title }}</h1>{% if hero.intro %}<p class="intro">{{ hero.intro }}</p>{% endif %}</section>
+{% if hero.image %}<img class="photo" style="height:680px;object-position:{{ hero.position or 'center' }}" src="{{ hero.image }}" alt="{{ hero.alt }}">{% endif %}
+{% endif %}{% endif %}
+{% set num = 0 %}
+{% for b in blocks %}{% include "blocks/" + b.type + ".njk" %}{% endfor %}
+{{ content | safe }}

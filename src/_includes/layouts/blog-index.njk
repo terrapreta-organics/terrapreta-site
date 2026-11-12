@@ -1,0 +1,8 @@
+---
+layout: layouts/base.njk
+---
+<section class="wrap top"><div class="eyebrow" style="color:var(--mute)">{{ hero.eyebrow }}</div><h1>{{ hero.title }}</h1><p class="intro">{{ hero.intro }}</p></section>
+<section class="sec wrap grid"><div class="label"><span class="n">01</span>Posts</div><div>
+{% if collections.posts.length %}<ul class="posts">{% for p in collections.posts %}<li><span class="d">{{ p.date | longDate }}</span><div><h3><a href="{{ p.url }}">{{ p.data.title }}</a></h3><p>{{ p.data.description }}</p></div></li>{% endfor %}</ul>
+{% else %}<p class="empty">{{ empty_text }}</p>{% endif %}
+</div></section>

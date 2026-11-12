@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ meta_title or title }}{% if not meta_title %} | {{ site.name }}{% endif %}</title>
+<meta name="description" content="{{ meta_description or description }}">
+{% if site.noindex or draft %}<meta name="robots" content="noindex,nofollow">{% endif %}
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="{% if layout == 'layouts/post.njk' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ meta_title or title }}">
+<meta property="og:description" content="{{ meta_description or description }}">
+{% set ogimg = og_image or (hero.image if hero) or image %}{% if ogimg %}<meta property="og:image" content="{{ site.url }}{{ ogimg }}">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<!-- Google tag (gtag.js) GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4 }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.ga4 }}');</script>
+<!-- Netlify Identity: needed so Decap CMS invite and login links land on /admin -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+{% if draft %}<div class="draftbar">Draft: not on the blog index, not for publishing yet</div>{% endif %}
+<header class="site{% if header_over %} over{% endif %}">
+  <a class="logo" href="/">{{ site.name }}</a>
+  <input type="checkbox" id="nav" class="navtoggle" aria-label="Menu"><label for="nav" class="navbtn">Menu</label>
+  <nav>{% for item in site.nav %}<a href="{{ item.url }}"{% if page.url.startsWith(item.url) %} class="on"{% endif %}>{{ item.text }}</a>{% endfor %}<a class="q" href="{{ site.quote_button.url }}">{{ site.quote_button.text }}</a></nav>
+</header>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="site"><span>{{ site.footer_left }}</span><span><a href="mailto:{{ site.email }}">{{ site.email }}</a></span><span>terrapreta.ca</span></footer>
+<script>
+if(window.netlifyIdentity){netlifyIdentity.on("init",function(u){if(!u){netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}
+</script>
+</body>
+</html>
