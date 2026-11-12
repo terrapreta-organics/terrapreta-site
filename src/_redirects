@@ -1,0 +1,3 @@
+# Old site routes (Manus React app). /, /reclamation, /agriculture and /contact keep their URLs.
+# TODO: /about has no page in the new build yet. It points at the home page until there is one.
+/about   /   301
