@@ -1,0 +1,1 @@
+<img class="photo" loading="lazy" src="{{ b.image }}" alt="{{ b.alt }}" style="{% if b.height %}height:{{ b.height }}px;{% endif %}object-position:{{ b.position or 'center' }}">{% if b.caption %}<p class="caption wrap">{{ b.caption }}</p>{% endif %}

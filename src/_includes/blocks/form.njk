@@ -1,0 +1,16 @@
+<section class="sec wrap grid"><div class="label">{% if b.number %}<span class="n">{{ b.number }}</span>{% endif %}{{ b.label }}</div><div>{% if b.heading %}<h2>{{ b.heading }}</h2>{% endif %}{% if b.body %}<div class="body">{{ b.body | md | safe }}</div>{% endif %}
+<!-- TODO: set action to the Formspree endpoint, e.g. action="https://formspree.io/f/XXXXXXXX". Until then the form does not submit anywhere. -->
+<form class="quote" method="POST" action="#" id="quote-form">
+<div class="f"><label for="f-type">I'm asking about</label><select id="f-type" name="type">{% for o in b.types %}<option value="{{ o.value }}">{{ o.text }}</option>{% endfor %}</select></div>
+<div class="f"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+<div class="f"><label for="f-company">Company or farm</label><input id="f-company" name="company" autocomplete="organization"></div>
+<div class="f"><label for="f-email">Email</label><input id="f-email" type="email" name="email" autocomplete="email" required></div>
+<div class="f"><label for="f-phone">Phone</label><input id="f-phone" type="tel" name="phone" autocomplete="tel"></div>
+<div class="f"><label for="f-where">Site or nearest town</label><input id="f-where" name="location"></div>
+<div class="f"><label for="f-acres">Acres</label><input id="f-acres" name="acres" inputmode="decimal"></div>
+<div class="f top-al"><label for="f-msg">Tell us about it</label><textarea id="f-msg" name="message" placeholder="{{ b.message_placeholder }}"></textarea></div>
+<input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="btns"><button class="btn fill" type="submit">{{ b.submit_text or "Send" }}</button></div>
+</form>
+<script>(function(){var t=new URLSearchParams(location.search).get("type");var s=document.getElementById("f-type");if(t&&s){for(var i=0;i<s.options.length;i++){if(s.options[i].value===t){s.selectedIndex=i;}}}})();</script>
+</div></section>

@@ -1,0 +1,2 @@
+<section class="sec wrap grid"><div class="label">{% if b.number %}<span class="n">{{ b.number }}</span>{% endif %}{{ b.label }}</div><div>{% if b.heading %}<h2>{{ b.heading }}</h2>{% endif %}
+<div class="why">{% for x in b.boxes %}<div class="b"><h3>{{ x.title }}</h3>{{ x.body | md | safe }}{% if x.note %}<p class="note">{{ x.note }}</p>{% endif %}</div>{% endfor %}</div></div></section>

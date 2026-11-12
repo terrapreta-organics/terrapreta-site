@@ -1,0 +1,2 @@
+<section class="cta {{ b.style or 'soil' }}"><div>{% if b.eyebrow %}<div class="eyebrow">{{ b.eyebrow }}</div>{% endif %}<h2>{{ b.heading }}</h2></div>
+<div>{% if b.body %}{{ b.body | md | safe }}{% endif %}<div class="btns">{% for x in b.buttons %}<a class="btn{% if x.fill %} fill{% endif %}" href="{{ x.url }}">{{ x.text }}</a>{% endfor %}</div></div></section>

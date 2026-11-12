@@ -1,0 +1,2 @@
+{#- Placeholder for content that is held back until approved. Nothing from the held content is rendered. -#}
+{% if not isProd %}<section class="sec wrap grid"><div class="label">{% if b.number %}<span class="n">{{ b.number }}</span>{% endif %}{{ b.label }}</div><div class="hidden"><span class="note">{{ b.marker or "[Hidden until approved]" }}</span><p style="font-size:19px;margin:0">{{ b.body }}</p></div></section>{% endif %}

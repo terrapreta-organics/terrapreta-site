@@ -1,0 +1,2 @@
+{% for t in b.tiles %}<section class="path{% if loop.index0 % 2 == 1 %} rev{% endif %}"><div class="ph"><img loading="lazy" src="{{ t.image }}" alt="{{ t.alt }}" style="object-position:{{ t.position or 'center' }}"></div>
+<div class="txt"><div class="label">{% if t.number %}<span class="n">{{ t.number }}</span>{% endif %}{{ t.label }}</div><h2>{{ t.heading }}</h2>{{ t.body | md | safe }}<a class="go" href="{{ t.link_url }}">{{ t.link_text }} &rarr;</a></div></section>{% endfor %}

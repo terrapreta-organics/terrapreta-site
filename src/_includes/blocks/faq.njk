@@ -1,0 +1,1 @@
+<section class="sec wrap grid faq"><div class="label">{% if b.number %}<span class="n">{{ b.number }}</span>{% endif %}{{ b.label }}</div><div>{% for q in b.items %}<div class="q"><h3>{{ q.question }}</h3>{{ q.answer | md | safe }}</div>{% endfor %}</div></section>

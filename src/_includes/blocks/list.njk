@@ -1,0 +1,2 @@
+<section class="sec wrap grid"><div class="label">{% if b.number %}<span class="n">{{ b.number }}</span>{% endif %}{{ b.label }}</div><div>{% if b.heading %}<h2>{{ b.heading }}</h2>{% endif %}{% if b.body %}<div class="body">{{ b.body | md | safe }}</div>{% endif %}
+<ul class="plist{% if b.small %} small{% endif %}">{% for i in b.items %}<li><b>{{ loop.index | pad2 }}</b><span>{{ i }}</span></li>{% endfor %}</ul>{% if b.note %}<p class="note" style="margin-top:20px">{{ b.note }}</p>{% endif %}</div></section>
