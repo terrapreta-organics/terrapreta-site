@@ -1,0 +1,26 @@
+{
+  "description": "TerraRevive for reclamation and SuperN for working fields. Organic pellets made in Sundre, Alberta, shipped in 1,500 lb totes.",
+  "keywords": "organic fertilizer, SuperN, SuperN-Revive, TerraRevive, prairie agriculture, reclamation, Alberta, Sundre, soil amendment, Canada",
+  "logo": "/logo.png",
+  "og_image": "/pellets-in-hand.jpg",
+  "same_as": [
+    "https://www.linkedin.com/company/terra-preta-organics",
+    "https://www.instagram.com/terrapretaorganics"
+  ],
+  "address": {
+    "street": "836 1st Ave SE",
+    "locality": "Sundre",
+    "region": "AB",
+    "postal": "T0M 1X0",
+    "country": "CA"
+  },
+  "geo": {
+    "latitude": 51.7994,
+    "longitude": -114.6397
+  },
+  "opening_hours": {
+    "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    "opens": "08:00",
+    "closes": "17:00"
+  }
+}

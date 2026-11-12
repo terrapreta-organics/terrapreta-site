@@ -2,8 +2,8 @@
 backend:
   name: git-gateway
   branch: main
-site_url: https://terrapreta.ca
-display_url: https://terrapreta.ca
+site_url: https://www.terrapreta.ca
+display_url: https://www.terrapreta.ca
 locale: en
 media_folder: src/images
 public_folder: /images
@@ -2959,7 +2959,7 @@ collections:
             widget: string
             required: false
           - name: noindex
-            label: Hide from Google (preview mode)
+            label: Hide the live site from Google (emergency). Deploy previews are always hidden.
             widget: boolean
           - name: email
             label: Email

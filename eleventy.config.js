@@ -10,9 +10,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/video": "video" });
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+  eleventyConfig.addPassthroughCopy({ "src/logo.png": "logo.png" });
+  eleventyConfig.addPassthroughCopy({ "src/pellets-in-hand.jpg": "pellets-in-hand.jpg" });
   eleventyConfig.ignores.add("src/admin/**");
   eleventyConfig.addPassthroughCopy({ "src/_redirects": "_redirects" });
-  eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
 
   eleventyConfig.addFilter("md", (s) => (s ? md.render(String(s)) : ""));
   eleventyConfig.addFilter("mdi", (s) => (s ? md.renderInline(String(s)) : ""));
@@ -21,6 +22,17 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter("longDate", (d) =>
     new Date(d).toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })
   );
+  eleventyConfig.addFilter("jsonld", (value) =>
+    JSON.stringify(value).replace(/</g, "\\u003c")
+  );
+  eleventyConfig.addFilter("sitemapMeta", (url) => {
+    if (url === "/") return { freq: "weekly", pri: "1.0" };
+    if (url === "/agriculture/" || url === "/reclamation/") return { freq: "monthly", pri: "0.9" };
+    if (url === "/contact/") return { freq: "monthly", pri: "0.8" };
+    if (url === "/blog/") return { freq: "weekly", pri: "0.6" };
+    if (String(url).startsWith("/blog/")) return { freq: "yearly", pri: "0.5" };
+    return { freq: "monthly", pri: "0.7" };
+  });
 
   // Published posts only: drafts never appear on the blog index or sitemap.
   eleventyConfig.addCollection("posts", (api) =>

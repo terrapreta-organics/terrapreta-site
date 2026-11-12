@@ -4,7 +4,8 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{%- for p in collections.all %}{% if not p.data.draft and p.url %}
-  <url><loc>{{ site.url }}{{ p.url }}</loc><lastmod>{{ p.date | isoDate }}</lastmod></url>
+{%- for p in collections.all %}{% if not p.data.draft and not p.data.noindex and p.url %}
+  {%- set meta = p.url | sitemapMeta %}
+  <url><loc>{{ site.url }}{{ p.url }}</loc><lastmod>{{ p.date | isoDate }}</lastmod><changefreq>{{ meta.freq }}</changefreq><priority>{{ meta.pri }}</priority></url>
 {%- endif %}{% endfor %}
 </urlset>

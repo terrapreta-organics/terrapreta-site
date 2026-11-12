@@ -2,13 +2,16 @@
 permalink: /robots.txt
 eleventyExcludeFromCollections: true
 ---
-{% if site.noindex -%}
-# PREVIEW: keep search engines out until launch.
-# At launch: set "noindex": false in src/_data/site.json, and remove X-Robots-Tag from src/_headers.
+{% if (not isProd) or site.noindex -%}
+# Preview build, or production with site.noindex still true.
+# Production indexing: npm run build:prod, and "noindex": false in src/_data/site.json.
 User-agent: *
 Disallow: /
 {%- else -%}
 User-agent: *
+Allow: /
+
 Disallow: /admin/
+
 Sitemap: {{ site.url }}/sitemap.xml
 {%- endif %}

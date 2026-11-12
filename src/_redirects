@@ -1,3 +1,47 @@
-# Old site routes (Manus React app). /, /reclamation, /agriculture and /contact keep their URLs.
-# TODO: /about has no page in the new build yet. It points at the home page until there is one.
-/about   /   301
+# Legacy URLs from the Vite site (wadebarrie/terra-preta).
+# Netlify already 301s slashless Eleventy paths (/agriculture -> /agriculture/).
+
+# About existed on the old site. This build has no About page yet.
+/about                  /                         301
+/about/                 /                         301
+
+# Agriculture product pages, before the four-page restructure.
+/supern                 /agriculture/             301
+/supern/                /agriculture/             301
+/organiphos             /agriculture/             301
+/organiphos/            /agriculture/             301
+/solutions/agriculture  /agriculture/             301
+/solutions/agriculture/ /agriculture/             301
+
+# Reclamation, product, and evidence pages.
+/solutions/reclamation  /reclamation/             301
+/solutions/reclamation/ /reclamation/             301
+/solutions/hydroseeding /reclamation/             301
+/solutions/hydroseeding/ /reclamation/            301
+/solutions/mining       /reclamation/             301
+/solutions/mining/      /reclamation/             301
+/solutions               /reclamation/            301
+/solutions/              /reclamation/            301
+/product/terra-revive   /reclamation/             301
+/product/terra-revive/  /reclamation/             301
+/product                /reclamation/             301
+/product/               /reclamation/             301
+
+# Calculators (pellet selector, cost payback) have no page here.
+/calculator             /reclamation/             301
+/calculator/            /reclamation/             301
+/calculator/*           /reclamation/             301
+
+# Evidence library, case studies, method statements, SDS/TDS index.
+/evidence               /reclamation/             301
+/evidence/              /reclamation/             301
+/evidence/*             /reclamation/             301
+
+# Public PDFs from the old site are not published here. The new pages
+# offer the label and SDS on request.
+/spec-sheets/*                          /contact/?type=documents  301
+/docs/SuperN-CFIA-Label.pdf             /contact/?type=documents  301
+/docs/SuperN-SDS.pdf                    /contact/?type=documents  301
+/docs/OrganiPhos-CFIA-Label.pdf         /contact/?type=documents  301
+/docs/OrganiPhos-SDS.pdf                /contact/?type=documents  301
+/terra-revive-sds.pdf                   /contact/?type=documents  301

@@ -12,5 +12,5 @@
 <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 <div class="btns"><button class="btn fill" type="submit">{{ b.submit_text or "Send" }}</button></div>
 </form>
-<script>(function(){var t=new URLSearchParams(location.search).get("type");var s=document.getElementById("f-type");if(t&&s){for(var i=0;i<s.options.length;i++){if(s.options[i].value===t){s.selectedIndex=i;}}}})();</script>
+<script>(function(){var hashType={"agriculture-quote":"farm","reclamation-quote":"reclamation"};var t=new URLSearchParams(location.search).get("type")||hashType[(location.hash||"").replace("#","")];var s=document.getElementById("f-type");if(t&&s){for(var i=0;i<s.options.length;i++){if(s.options[i].value===t){s.selectedIndex=i;}}}})();</script>
 </div></section>

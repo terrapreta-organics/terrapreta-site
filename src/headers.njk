@@ -1,0 +1,11 @@
+---
+permalink: /_headers
+eleventyExcludeFromCollections: true
+---
+{% if (not isProd) or site.noindex -%}
+# Preview builds, and production only when site.noindex is true.
+/*
+  X-Robots-Tag: noindex, nofollow
+{%- else -%}
+# Production build: indexable. No X-Robots-Tag.
+{%- endif %}
