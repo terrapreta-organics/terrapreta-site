@@ -1,8 +1,8 @@
 {
   "name": "Terra Preta Organics",
-  "url": "https://terrapreta.ca",
+  "url": "https://www.terrapreta.ca",
   "ga4": "G-2RWSMCV2DD",
-  "noindex": true,
+  "noindex": false,
   "email": "info@terrapreta.ca",
   "address": "836 1st Ave SE, Sundre, AB T0M 1X0",
   "footer_left": "Terra Preta Organics, Sundre, Alberta",

@@ -52,8 +52,8 @@ const pageFields = (withHero = true, heroFull = false) => [
 const config = {
   backend: { name: "git-gateway", branch: "main" },
   // TODO: Decap needs a Git repo hookup (Netlify site linked to GitHub, Identity and Git Gateway on). See README.
-  site_url: "https://terrapreta.ca",
-  display_url: "https://terrapreta.ca",
+  site_url: "https://www.terrapreta.ca",
+  display_url: "https://www.terrapreta.ca",
   locale: "en",
   media_folder: "src/images",
   public_folder: "/images",
@@ -92,7 +92,7 @@ const config = {
       files: [
         { name: "site", label: "Menu, footer and tracking", file: "src/_data/site.json", fields: [
           str("name", "Business name"), str("url", "Site address"), str("ga4", "Google Analytics ID"),
-          { name: "noindex", label: "Hide from Google (preview mode)", widget: "boolean" },
+          { name: "noindex", label: "Hide the live site from Google (emergency). Deploy previews are always hidden.", widget: "boolean" },
           str("email", "Email"), str("address", "Address"), str("footer_left", "Footer text"),
           { name: "nav", label: "Menu", widget: "list", fields: [str("text", "Text"), str("url", "Link")] },
           { name: "quote_button", label: "Quote button", widget: "object", fields: [str("text", "Text"), str("url", "Link")] },
