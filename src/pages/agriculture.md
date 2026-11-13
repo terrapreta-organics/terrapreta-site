@@ -26,8 +26,8 @@ blocks:
     rows:
       - { key: Form, value: Pellet }
       - { key: Guaranteed analysis, value: 8.5-2-1 }
-      - { key: Organic matter, value: "79.5% (lab tested, April 2026)", status: "[Pending Lee OK]", status_style: soon }
-      - { key: Heavy metals, value: "Arsenic, cadmium and mercury below detection, other metals low (lab tested, April 2026)", status: "[Pending Lee OK]", status_style: soon }
+      - { key: Organic matter, value: "79.5% (lab tested, April 2026)" }
+      - { key: Heavy metals, value: "Arsenic, cadmium and mercury below detection, other metals low (lab tested, April 2026)" }
       - { key: Rate, value: "Contact us for rates" }
       - { key: Packaging, value: "1,500 lb totes" }
       - { key: Delivery, value: "Western Canada delivery, or pickup in Sundre" }
