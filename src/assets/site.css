@@ -100,6 +100,8 @@ p{margin:0 0 20px;max-width:620px}
 .article h2{font-size:36px;margin:48px 0 18px}
 .article p,.article li{font-size:19px;line-height:1.65;max-width:none}
 .article ul{padding-left:22px}
+.article img{width:100%;height:auto;object-fit:contain}
+.article p > img + em{display:block;margin-top:10px;font-size:14px;line-height:1.45;color:var(--mute)}
 .draftbar{background:var(--ochre);color:var(--soil);padding:12px var(--pad);font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
 
 /* form */
