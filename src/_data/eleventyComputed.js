@@ -32,8 +32,10 @@ function postalAddress(seo) {
 function breadcrumbs(origin, pageUrl, title) {
   if (!pageUrl || pageUrl === "/" || pageUrl === "/404.html") return null;
   const crumbs = [{ name: "Home", item: `${origin}/` }];
-  if (pageUrl.startsWith("/reclamation/restoration")) {
+  if (pageUrl.startsWith("/reclamation/") && pageUrl !== "/reclamation/") {
     crumbs.push({ name: "Reclamation", item: `${origin}/reclamation/` });
+  } else if (pageUrl.startsWith("/agriculture/") && pageUrl !== "/agriculture/") {
+    crumbs.push({ name: "Agriculture", item: `${origin}/agriculture/` });
   } else if (pageUrl.startsWith("/blog/") && pageUrl !== "/blog/") {
     crumbs.push({ name: "Blog", item: `${origin}/blog/` });
   }

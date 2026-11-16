@@ -30,6 +30,7 @@ module.exports = function (eleventyConfig) {
     if (url === "/agriculture/" || url === "/reclamation/") return { freq: "monthly", pri: "0.9" };
     if (url === "/contact/") return { freq: "monthly", pri: "0.8" };
     if (url === "/blog/") return { freq: "weekly", pri: "0.6" };
+    if (url === "/reclamation/case-studies/" || url === "/agriculture/case-studies/") return { freq: "monthly", pri: "0.6" };
     if (String(url).startsWith("/blog/")) return { freq: "yearly", pri: "0.5" };
     return { freq: "monthly", pri: "0.7" };
   });
@@ -37,6 +38,11 @@ module.exports = function (eleventyConfig) {
   // Published posts only: drafts never appear on the blog index or sitemap.
   eleventyConfig.addCollection("posts", (api) =>
     api.getFilteredByGlob("src/blog/posts/*.md").filter((p) => !p.data.draft).sort((a, b) => b.date - a.date)
+  );
+
+  // Posts flagged case_study: reclamation or agriculture. Drafts stay off the lists.
+  eleventyConfig.addFilter("caseStudies", (posts, track) =>
+    (posts || []).filter((p) => p && p.data && p.data.case_study === track)
   );
 
   eleventyConfig.addGlobalData("isProd", isProd);

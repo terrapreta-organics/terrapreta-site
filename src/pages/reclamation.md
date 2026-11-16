@@ -52,6 +52,8 @@ blocks:
         body: We make it at our plant in Sundre. It was trialled on an Alberta reclamation site against an untreated control, and assessed by a professional agrologist for cover and plant density.
       - title: For wellsite reclamation and a poor catch.
         body: TerraRevive is an 8.5-2-1 dry pellet, with rates starting at 1,500 lb/ac. It doesn't replace topsoil. It builds soil health in the ground you've got, with slow-release nitrogen, organic matter and food for soil biology. Tell us about your site and we'll give you a rate and a quote.
+    link_text: Case studies
+    link_url: /reclamation/case-studies/
   - type: duo
     left: { image: /images/05_reclamation_pellets_on_soil.jpg, alt: Pellets on bare soil, position: center 75% }
     right: { image: /images/06_site_picker_lifting_tote.jpg, alt: A picker lifting a tote on site, position: center }
