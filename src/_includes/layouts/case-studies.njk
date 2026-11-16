@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+---
+<section class="wrap top"><div class="eyebrow" style="color:var(--mute)">{{ hero.eyebrow }}</div><h1>{{ hero.title }}</h1>{% if hero.intro %}<p class="intro">{{ hero.intro }}</p>{% endif %}</section>
+{% set studies = collections.posts | caseStudies(track) %}
+{% if studies.length %}
+<section class="sec wrap grid"><div class="label"><span class="n">01</span>{{ section_label or "Case studies" }}</div><div>
+<ul class="cards">{% for p in studies %}<li><a class="card" href="{{ p.url }}"><img src="{{ p.data.image }}" alt="{{ p.data.image_alt }}" style="object-position:{{ p.data.case_position or 'center' }}"><div>{% if p.data.case_meta %}<p class="meta">{{ p.data.case_meta }}</p>{% endif %}<h3>{{ p.data.title }}</h3><p>{{ p.data.case_summary or p.data.description }}</p></div></a></li>{% endfor %}</ul>
+</div></section>
+{% else %}
+<section class="sec wrap"><p class="empty">{{ empty_text }}</p>{% if empty_button and empty_button.url %}<div class="btns"><a class="btn fill" href="{{ empty_button.url }}">{{ empty_button.text }}</a></div>{% endif %}</section>
+{% endif %}

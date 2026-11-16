@@ -40,7 +40,7 @@
 <header class="site{% if header_over %} over{% endif %}">
   <a class="logo" href="/">{{ site.name }}</a>
   <input type="checkbox" id="nav" class="navtoggle" aria-label="Menu"><label for="nav" class="navbtn">Menu</label>
-  <nav>{% for item in site.nav %}<a href="{{ item.url }}"{% if page.url.startsWith(item.url) %} class="on"{% endif %}>{{ item.text }}</a>{% endfor %}<a class="q" href="{{ site.quote_button.url }}">{{ site.quote_button.text }}</a></nav>
+  <nav aria-label="Primary">{% for item in site.nav %}{% set section = item.url != "/" and page.url.startsWith(item.url) %}{% set exact = page.url == item.url %}{% if item.children and (item.children | length) %}<div class="navgroup"><a href="{{ item.url }}"{% if section %} class="on"{% endif %}{% if exact %} aria-current="page"{% endif %} aria-haspopup="true">{{ item.text }}</a><div class="subnav">{% for child in item.children %}{% set childOn = child.url != "/" and page.url.startsWith(child.url) %}<a href="{{ child.url }}"{% if childOn %} class="on"{% endif %}{% if page.url == child.url %} aria-current="page"{% endif %}>{{ child.text }}</a>{% endfor %}</div></div>{% else %}<a href="{{ item.url }}"{% if section %} class="on"{% endif %}{% if exact %} aria-current="page"{% endif %}>{{ item.text }}</a>{% endif %}{% endfor %}<a class="q" href="{{ site.quote_button.url }}">{{ site.quote_button.text }}</a></nav>
 </header>
 <main id="main">
 {{ content | safe }}

@@ -15,14 +15,14 @@ const blockTypes = [
   { name: "text", label: "Text section", widget: "object", fields: [num, label, heading, mdw("body", "Body"), str("note", "Internal note (shows in ochre)")] },
   { name: "photo", label: "Full-width photo", widget: "object", fields: [img("image", "Photo"), str("alt", "Photo description"), str("caption", "Caption (optional)"), { name: "height", label: "Height in px", widget: "number", required: false }, str("position", "Photo focus")] },
   { name: "clip", label: "Text with a short looping video", widget: "object", fields: [str("number", "Section number"), str("label", "Section label"), str("heading", "Heading"), { name: "body", label: "Text", widget: "markdown", required: false }, { name: "video", label: "Video file (mp4)", widget: "file", required: false }, img("poster", "Still image shown before the video plays"), str("alt", "Video description")] },
-  { name: "duo", label: "Two photos side by side", widget: "object", fields: [photo("left", "Left photo"), photo("right", "Right photo"), str("caption", "Caption (optional)")] },
+  { name: "duo", label: "Two photos side by side", widget: "object", fields: [photo("left", "Left photo"), photo("right", "Right photo"), str("caption", "Caption (optional)"), str("link_text", "Link text (optional)"), str("link_url", "Link URL (optional)")] },
   { name: "rows", label: "Spec rows", widget: "object", fields: [num, label, heading, mdw("body", "Intro"),
       { name: "rows", label: "Rows", widget: "list", fields: [str("key", "Label"), str("value", "Value"), str("status", "Tag on the right (optional)"),
         { name: "status_style", label: "Tag colour", widget: "select", options: [{ label: "Green (ok)", value: "ok" }, { label: "Ochre (pending)", value: "soon" }], required: false },
         { name: "hide", label: "Hide this row", widget: "boolean", required: false, default: false }] },
       str("note", "Internal note")] },
   { name: "list", label: "Numbered list", widget: "object", fields: [num, label, heading, mdw("body", "Intro"), { name: "items", label: "Items", widget: "list", field: str("item", "Item") }, { name: "small", label: "Smaller text", widget: "boolean", required: false }, str("note", "Internal note")] },
-  { name: "why", label: "Four boxes (Why SuperN)", widget: "object", fields: [num, label, heading, { name: "boxes", label: "Boxes", widget: "list", fields: [str("title", "Title"), mdw("body", "Text"), str("note", "Internal note")] }] },
+  { name: "why", label: "Four boxes (Why SuperN)", widget: "object", fields: [num, label, heading, { name: "boxes", label: "Boxes", widget: "list", fields: [str("title", "Title"), mdw("body", "Text"), str("note", "Internal note")] }, str("link_text", "Link text (optional)"), str("link_url", "Link URL (optional)")] },
   { name: "faq", label: "Questions", widget: "object", fields: [num, label, { name: "items", label: "Questions", widget: "list", fields: [str("question", "Question"), mdw("answer", "Answer")] }] },
   { name: "hidden", label: "Hidden placeholder (preview only)", widget: "object", fields: [num, label, str("marker", "Marker"), txt("body", "Internal note")] },
   { name: "paths", label: "Pick-your-side tiles", widget: "object", fields: [{ name: "tiles", label: "Tiles", widget: "list", fields: [num, label, heading, mdw("body", "Text"), str("link_text", "Link text"), str("link_url", "Link URL"), img("image", "Photo"), str("alt", "Photo description"), str("position", "Photo focus")] }] },
@@ -49,6 +49,19 @@ const pageFields = (withHero = true, heroFull = false) => [
   { name: "blocks", label: "Sections", widget: "list", types: blockTypes, typeKey: "type" },
 ];
 
+const casePage = (permalink) => [
+  { name: "layout", widget: "hidden", default: "layouts/case-studies.njk" },
+  { name: "permalink", widget: "hidden", default: permalink },
+  str("title", "Page name"),
+  str("meta_title", "Search title"),
+  txt("meta_description", "Search description"),
+  { name: "hero", label: "Top of page", widget: "object", fields: [str("eyebrow", "Small label"), str("title", "Big title"), txt("intro", "Intro line")] },
+  str("track", "Which posts to list: reclamation or agriculture"),
+  str("section_label", "Section label"),
+  str("empty_text", "Text when there are no case studies"),
+  { name: "empty_button", label: "Button when there are no case studies", widget: "object", required: false, fields: [str("text", "Text"), str("url", "Link")] },
+];
+
 const config = {
   backend: { name: "git-gateway", branch: "main" },
   // TODO: Decap needs a Git repo hookup (Netlify site linked to GitHub, Identity and Git Gateway on). See README.
@@ -69,6 +82,12 @@ const config = {
         { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false },
         { name: "draft", label: "Draft (keeps it off the blog page and out of Google)", widget: "boolean", default: true },
         { name: "category", label: "Category", widget: "select", options: ["Reclamation", "Agriculture", "From the plant"], required: false },
+        { name: "case_study", label: "Case studies page", widget: "select", required: false, default: "",
+          hint: "Leave as not a case study to keep the post off those pages. Reclamation lists on /reclamation/case-studies/. Agriculture lists on /agriculture/case-studies/.",
+          options: [{ label: "Not a case study", value: "" }, { label: "Reclamation", value: "reclamation" }, { label: "Agriculture", value: "agriculture" }] },
+        str("case_meta", "Case study label (client, place, dates)"),
+        txt("case_summary", "Case study card summary"),
+        str("case_position", "Case study card photo focus, e.g. center"),
         img("image", "Top photo"), str("image_alt", "Photo description"), str("image_position", "Photo focus"),
         { name: "body", label: "Post", widget: "markdown" },
       ],
@@ -79,7 +98,9 @@ const config = {
         { name: "home", label: "Home", file: "src/pages/home.md", fields: pageFields(true, true) },
         { name: "reclamation", label: "Reclamation", file: "src/pages/reclamation.md", fields: pageFields() },
         { name: "restoration", label: "Reclamation: Restoration", file: "src/pages/restoration.md", fields: pageFields() },
+        { name: "reclamation_cases", label: "Reclamation: Case studies", file: "src/pages/reclamation-case-studies.md", fields: casePage("/reclamation/case-studies/") },
         { name: "agriculture", label: "Agriculture", file: "src/pages/agriculture.md", fields: pageFields() },
+        { name: "agriculture_cases", label: "Agriculture: Case studies", file: "src/pages/agriculture-case-studies.md", fields: casePage("/agriculture/case-studies/") },
         { name: "contact", label: "Contact", file: "src/pages/contact.md", fields: pageFields() },
         { name: "blog_index", label: "Blog page", file: "src/pages/blog.md", fields: [
             { name: "layout", widget: "hidden", default: "layouts/blog-index.njk" }, { name: "permalink", widget: "hidden", default: "/blog/" },
@@ -95,7 +116,8 @@ const config = {
           str("name", "Business name"), str("url", "Site address"), str("ga4", "Google Analytics ID"),
           { name: "noindex", label: "Hide the live site from Google (emergency). Deploy previews are always hidden.", widget: "boolean" },
           str("email", "Email"), str("address", "Address"), str("footer_left", "Footer text"),
-          { name: "nav", label: "Menu", widget: "list", fields: [str("text", "Text"), str("url", "Link")] },
+          { name: "nav", label: "Menu", widget: "list", fields: [str("text", "Text"), str("url", "Link"),
+            { name: "children", label: "Sub links", widget: "list", required: false, fields: [str("text", "Text"), str("url", "Link")] }] },
           { name: "quote_button", label: "Quote button", widget: "object", fields: [str("text", "Text"), str("url", "Link")] },
         ]},
         { name: "products", label: "Product names (preview flip)", file: "src/_data/products.json", fields: [

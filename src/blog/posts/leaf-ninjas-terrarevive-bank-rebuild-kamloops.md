@@ -4,6 +4,10 @@ seo_title: "TerraRevive on a Bioengineering Bank Rebuild Near Kamloops | Leaf Ni
 description: "See how Leaf Ninjas used TerraRevive on a bioengineered riverbank near Kamloops, BC, from bare bank in spring 2025 to dense willow growth a year later."
 date: 2026-11-16
 category: Reclamation
+case_study: reclamation
+case_meta: "Leaf Ninjas Inc. · Near Kamloops, BC · Spring 2025 to July 2026"
+case_summary: "A bioengineered riverbank near Kamloops, BC, followed from bare bank in spring 2025 to dense willow growth a year later."
+case_position: center
 image: /images/leaf-ninjas-july-2026-tyler-for-scale.jpg
 image_alt: "July 2026. One year on, Tyler from Leaf Ninjas standing in the growth for scale."
 image_position: center 40%

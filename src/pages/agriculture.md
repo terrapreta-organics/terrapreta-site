@@ -73,6 +73,8 @@ blocks:
     left: { image: /images/17_ag_trial_plots_early.jpg, alt: Flagged SuperN trial plots early in the season, position: center }
     right: { image: /images/18_ag_trial_plots_late.jpg, alt: The same trial plots later in the season, position: center }
     caption: Alberta Ag Trial Plots 2026
+    link_text: Case studies
+    link_url: /agriculture/case-studies/
   - type: faq
     number: "06"
     label: Questions

@@ -49,6 +49,33 @@ collections:
           - Agriculture
           - From the plant
         required: false
+      - name: case_study
+        label: Case studies page
+        widget: select
+        required: false
+        default: ''
+        hint: >-
+          Leave as not a case study to keep the post off those pages. Reclamation lists on /reclamation/case-studies/. Agriculture lists on
+          /agriculture/case-studies/.
+        options:
+          - label: Not a case study
+            value: ''
+          - label: Reclamation
+            value: reclamation
+          - label: Agriculture
+            value: agriculture
+      - name: case_meta
+        label: Case study label (client, place, dates)
+        widget: string
+        required: false
+      - name: case_summary
+        label: Case study card summary
+        widget: text
+        required: false
+      - name: case_position
+        label: Case study card photo focus, e.g. center
+        widget: string
+        required: false
       - name: image
         label: Top photo
         widget: image
@@ -297,6 +324,14 @@ collections:
                     label: Caption (optional)
                     widget: string
                     required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: rows
                 label: Spec rows
                 widget: object
@@ -440,6 +475,14 @@ collections:
                         label: Internal note
                         widget: string
                         required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: faq
                 label: Questions
                 widget: object
@@ -862,6 +905,14 @@ collections:
                     label: Caption (optional)
                     widget: string
                     required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: rows
                 label: Spec rows
                 widget: object
@@ -1005,6 +1056,14 @@ collections:
                         label: Internal note
                         widget: string
                         required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: faq
                 label: Questions
                 widget: object
@@ -1427,6 +1486,14 @@ collections:
                     label: Caption (optional)
                     widget: string
                     required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: rows
                 label: Spec rows
                 widget: object
@@ -1570,6 +1637,14 @@ collections:
                         label: Internal note
                         widget: string
                         required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: faq
                 label: Questions
                 widget: object
@@ -1769,6 +1844,69 @@ collections:
                         widget: string
                         required: false
             typeKey: type
+      - name: reclamation_cases
+        label: 'Reclamation: Case studies'
+        file: src/pages/reclamation-case-studies.md
+        fields:
+          - name: layout
+            widget: hidden
+            default: layouts/case-studies.njk
+          - name: permalink
+            widget: hidden
+            default: /reclamation/case-studies/
+          - name: title
+            label: Page name
+            widget: string
+            required: false
+          - name: meta_title
+            label: Search title
+            widget: string
+            required: false
+          - name: meta_description
+            label: Search description
+            widget: text
+            required: false
+          - name: hero
+            label: Top of page
+            widget: object
+            fields:
+              - name: eyebrow
+                label: Small label
+                widget: string
+                required: false
+              - name: title
+                label: Big title
+                widget: string
+                required: false
+              - name: intro
+                label: Intro line
+                widget: text
+                required: false
+          - name: track
+            label: 'Which posts to list: reclamation or agriculture'
+            widget: string
+            required: false
+          - name: section_label
+            label: Section label
+            widget: string
+            required: false
+          - name: empty_text
+            label: Text when there are no case studies
+            widget: string
+            required: false
+          - name: empty_button
+            label: Button when there are no case studies
+            widget: object
+            required: false
+            fields:
+              - name: text
+                label: Text
+                widget: string
+                required: false
+              - name: url
+                label: Link
+                widget: string
+                required: false
       - name: agriculture
         label: Agriculture
         file: src/pages/agriculture.md
@@ -1992,6 +2130,14 @@ collections:
                     label: Caption (optional)
                     widget: string
                     required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: rows
                 label: Spec rows
                 widget: object
@@ -2135,6 +2281,14 @@ collections:
                         label: Internal note
                         widget: string
                         required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: faq
                 label: Questions
                 widget: object
@@ -2334,6 +2488,69 @@ collections:
                         widget: string
                         required: false
             typeKey: type
+      - name: agriculture_cases
+        label: 'Agriculture: Case studies'
+        file: src/pages/agriculture-case-studies.md
+        fields:
+          - name: layout
+            widget: hidden
+            default: layouts/case-studies.njk
+          - name: permalink
+            widget: hidden
+            default: /agriculture/case-studies/
+          - name: title
+            label: Page name
+            widget: string
+            required: false
+          - name: meta_title
+            label: Search title
+            widget: string
+            required: false
+          - name: meta_description
+            label: Search description
+            widget: text
+            required: false
+          - name: hero
+            label: Top of page
+            widget: object
+            fields:
+              - name: eyebrow
+                label: Small label
+                widget: string
+                required: false
+              - name: title
+                label: Big title
+                widget: string
+                required: false
+              - name: intro
+                label: Intro line
+                widget: text
+                required: false
+          - name: track
+            label: 'Which posts to list: reclamation or agriculture'
+            widget: string
+            required: false
+          - name: section_label
+            label: Section label
+            widget: string
+            required: false
+          - name: empty_text
+            label: Text when there are no case studies
+            widget: string
+            required: false
+          - name: empty_button
+            label: Button when there are no case studies
+            widget: object
+            required: false
+            fields:
+              - name: text
+                label: Text
+                widget: string
+                required: false
+              - name: url
+                label: Link
+                widget: string
+                required: false
       - name: contact
         label: Contact
         file: src/pages/contact.md
@@ -2557,6 +2774,14 @@ collections:
                     label: Caption (optional)
                     widget: string
                     required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: rows
                 label: Spec rows
                 widget: object
@@ -2700,6 +2925,14 @@ collections:
                         label: Internal note
                         widget: string
                         required: false
+                  - name: link_text
+                    label: Link text (optional)
+                    widget: string
+                    required: false
+                  - name: link_url
+                    label: Link URL (optional)
+                    widget: string
+                    required: false
               - name: faq
                 label: Questions
                 widget: object
@@ -2989,6 +3222,19 @@ collections:
                 label: Link
                 widget: string
                 required: false
+              - name: children
+                label: Sub links
+                widget: list
+                required: false
+                fields:
+                  - name: text
+                    label: Text
+                    widget: string
+                    required: false
+                  - name: url
+                    label: Link
+                    widget: string
+                    required: false
           - name: quote_button
             label: Quote button
             widget: object
