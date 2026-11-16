@@ -23,6 +23,10 @@ collections:
       - name: title
         label: Title
         widget: string
+      - name: seo_title
+        label: Search title (shows in Google and the browser tab)
+        widget: string
+        required: false
       - name: description
         label: Short summary (shows on the blog page and in Google)
         widget: text

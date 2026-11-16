@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{{ meta_title or title }}{% if not meta_title %} | {{ site.name }}{% endif %}</title>
+<title>{{ seo_title or meta_title or title }}{% if not seo_title and not meta_title %} | {{ site.name }}{% endif %}</title>
 <meta name="description" content="{{ meta_description or description }}">
 <meta name="keywords" content="{{ seo.keywords }}">
 <meta name="author" content="{{ site.name }}">
@@ -13,11 +13,11 @@
 <meta property="og:locale" content="en_CA">
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-<meta property="og:title" content="{{ meta_title or title }}">
+<meta property="og:title" content="{{ seo_title or meta_title or title }}">
 <meta property="og:description" content="{{ meta_description or description }}">
 {% set ogimg = og_image or (hero.image if hero) or image or seo.og_image %}{% if ogimg %}<meta property="og:image" content="{{ site.url }}{{ ogimg }}">{% endif %}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ meta_title or title }}">
+<meta name="twitter:title" content="{{ seo_title or meta_title or title }}">
 <meta name="twitter:description" content="{{ meta_description or description }}">
 {% if ogimg %}<meta name="twitter:image" content="{{ site.url }}{{ ogimg }}">{% endif %}
 <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">

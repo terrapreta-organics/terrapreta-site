@@ -64,6 +64,7 @@ const config = {
       summary: "{{title}} ({{date}})", sortable_fields: ["date", "title"],
       fields: [
         { name: "title", label: "Title", widget: "string" },
+        str("seo_title", "Search title (shows in Google and the browser tab)"),
         txt("description", "Short summary (shows on the blog page and in Google)"),
         { name: "date", label: "Date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false },
         { name: "draft", label: "Draft (keeps it off the blog page and out of Google)", widget: "boolean", default: true },
